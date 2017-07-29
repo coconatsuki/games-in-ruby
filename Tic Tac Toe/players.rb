@@ -1,7 +1,7 @@
 class Players
 
   def initialize
-    @name = ""
+    @name = ''
   end
 
   def ask_for_nameX

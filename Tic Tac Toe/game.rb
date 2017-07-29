@@ -7,9 +7,9 @@ class Game
     @player1 = Players.new
     @player2 = Players.new
     @player1.ask_for_nameX
-    @player2.ask_for_nameO
+    @player2.ask_for_nameO # never used :) maybe add a @current_player and each turn you shift between player 1 and 2 ?
     @board = Board.new
-    4.times do
+    4.times do # this is the cheap way to do it, but it works
       one_turn("X")
       one_turn("O")
     end
@@ -17,9 +17,9 @@ class Game
     even
   end
 
-  def one_turn symbol
+  def one_turn symbol # missing ()
     @board.display
-    @player1.choose_box (symbol)
+    @player1.choose_box (symbol) # no space
     @board.setting_position (symbol)
     @board.check_for_victory (symbol)
   end

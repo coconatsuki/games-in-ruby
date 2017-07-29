@@ -4,29 +4,29 @@ class Board
     @boxes = { "A1" => "   ", "A2" => "   ", "A3" => "   ",
       "B1" => "   ", "B2" => "   ", "B3" => "   ",
       "C1" => "   ", "C2" => "   ", "C3" => "   " }
-      @used_boxes = []
-      @position = ""
+      @used_boxes = [] #this can be a select on @boxes
+      @position = "" # Do you need an instance variable ?
     end
 
     def display
       puts "\n    1   2   3  "
-      puts "A |#{ @boxes["A1"] }|#{ @boxes["A2"] }|#{ @boxes["A3"] }|"
+      puts "A |#{@boxes["A1"]}|#{@boxes["A2"]}|#{@boxes["A3"]}|"
       puts "   ------------"
-      puts "B |#{ @boxes["B1"] }|#{ @boxes["B2"] }|#{ @boxes["B3"] }|"
+      puts "B |#{@boxes["B1"]}|#{@boxes["B2"]}|#{@boxes["B3"]}|"
       puts "   ------------"
-      puts "C |#{ @boxes["C1"] }|#{ @boxes["C2"] }|#{ @boxes["C3"] }|"
+      puts "C |#{@boxes["C1"]}|#{@boxes["C2"]}|#{@boxes["C3"]}|"
     end
 
     def setting_position (symbol)
-      @position = gets.chomp.upcase
+      @position = gets.chomp.upcase # This is a valid case of using a while
       if valid?(@position)
         if available?(@position)
           print_position(symbol)
         else
-          setting_position (symbol)
+          setting_position(symbol)
         end
       else
-        setting_position (symbol)
+        setting_position(symbol)
       end
     end
 
@@ -35,7 +35,7 @@ class Board
     end
 
     def valid?(x_or_o)
-      if @boxes.has_key? x_or_o
+      if @boxes.has_key? x_or_o # missing ()
         true
       else
         puts "\nI didn't get this. Could you repeat ?"
@@ -45,7 +45,7 @@ class Board
     end
 
     def available?(x_or_o)
-      if @used_boxes.include? x_or_o
+      if @used_boxes.include? x_or_o # missing ()
         puts "Sorry dear, this box is not available. Please choose an other one !"
         false
       else
@@ -53,16 +53,16 @@ class Board
       end
     end
 
-    def check_for_victory (symbol)
-      if victory_conditions (symbol)
+    def check_for_victory (symbol) # don't put space between a method and its args
+      if victory_conditions(symbol)
         display
         puts "\n The player with the #{symbol} wins, congrats !!"
         exit
       end
     end
 
-    def victory_conditions (symbol)
-      if @boxes["A1"] == " #{symbol} " && @boxes["A2"]  == " #{symbol} " && @boxes["A3"] == " #{symbol} "
+    def victory_conditions (symbol) # same
+      if @boxes["A1"] == " #{symbol} " && @boxes["A2"]  == " #{symbol} " && @boxes["A3"] == " #{symbol} " # You don't need a if, just to return a boolean
         true
       elsif @boxes["B1"] == " #{symbol} " && @boxes["B2"]  == " #{symbol} " && @boxes["B3"] == " #{symbol} "
         true
