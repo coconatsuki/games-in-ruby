@@ -17,11 +17,11 @@ class Game
     even
   end
 
-  def one_turn symbol # missing ()
+  def one_turn(symbol)
     @board.display
-    @player1.choose_box (symbol) # no space
-    @board.setting_position (symbol)
-    @board.check_for_victory (symbol)
+    @player1.choose_box(symbol)
+    @board.setting_position(symbol)
+    @board.check_for_victory(symbol)
   end
 
   def even
