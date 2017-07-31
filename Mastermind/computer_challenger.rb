@@ -1,4 +1,4 @@
-class Computer_setter
+class Computer_challenger
 
   def initialize
     @colors_letters = ['Y', 'G', 'B', 'O', 'W', 'P', 'R']
