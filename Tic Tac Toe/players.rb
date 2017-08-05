@@ -1,5 +1,4 @@
 class Players
-
   def initialize
     @name = ''
   end
@@ -14,9 +13,7 @@ class Players
     @name = gets.chomp
   end
 
-  def choose_box (player)
-    puts "\n#{@name}, choose an avalaible box between A1 and C3 ! (you have the '#{player}}')\n"
+  def choose_box(player)
+    puts "\n#{@name}, choose an avalaible box between A1 and C3 ! (you have the '#{player}')\n"
   end
-
-
 end

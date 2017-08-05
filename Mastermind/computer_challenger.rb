@@ -1,7 +1,6 @@
-class Computer_challenger
-
+class ComputerChallenger
   def initialize
-    @colors_letters = ['Y', 'G', 'B', 'O', 'W', 'P', 'R']
+    @colors_letters = %w[Y G B O W P R]
     @code = []
   end
 
@@ -22,7 +21,7 @@ class Computer_challenger
   end
 
   def evaluation(try)
-    eval = {perfect: 0, good_color: 0}
+    eval = { perfect: 0, good_color: 0 }
     try.each.with_index do |el, i|
       if @code.include? el
         if i == @code.index(el)
@@ -32,6 +31,10 @@ class Computer_challenger
         end
       end
     end
+    eval_results(eval)
+  end
+
+  def eval_results(eval)
     print "\n#{@code}"
     puts "\n==> #{eval[:perfect]} colors are correct and in the good position !"
     puts "==> #{eval[:good_color]} colors are correct but in the wrong position."
@@ -40,18 +43,16 @@ class Computer_challenger
     else
       false
       puts "\nYou can try again :)"
-      puts "---------------------------"
+      puts '---------------------------'
     end
   end
 
   def valid?(try)
-    try.each do |el|
+    try.each do |el| # .all?
       unless @colors_letters.include?(el) && try.size == 5
         false
         break
       end
     end
   end
-
-
 end

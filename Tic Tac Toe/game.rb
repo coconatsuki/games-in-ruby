@@ -1,4 +1,4 @@
-require './interface'
+require './board'
 require './players'
 
 class Game
@@ -9,11 +9,11 @@ class Game
     @player1.ask_for_nameX
     @player2.ask_for_nameO # never used :) maybe add a @current_player and each turn you shift between player 1 and 2 ?
     @board = Board.new
-    4.times do # this is the cheap way to do it, but it works
-      one_turn("X")
-      one_turn("O")
+    4.times do
+      one_turn('X')
+      one_turn('O')
     end
-    one_turn ("X")
+    one_turn('X')
     even
   end
 
@@ -29,7 +29,6 @@ class Game
     puts "\nNo one wins... Sorry. Play again ?"
     exit
   end
-
 end
 
 game = Game.new

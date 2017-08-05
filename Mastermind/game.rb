@@ -4,17 +4,16 @@ require './computer_guesser'
 require './computer_challenger'
 
 class Game
-
   def initialize
-    @computer_challenger = Computer_challenger.new
-    @computer_guesser = Computer_guesser.new
-    @guesser_player_text = Guesser_player_text.new
-    @challenging_player_text = Challenging_player_text.new
+    @computer_challenger = ComputerChallenger.new
+    @computer_guesser = ComputerGuesser.new
+    @guesser_player_text = GuesserPlayerText.new
+    @challenging_player_text = ChallengingPlayerText.new
   end
 
   def start_new_game
     @guesser_player_text.ask_for_name
-      if @guesser_player_text.choose_game_mode == "1"
+    if @guesser_player_text.choose_game_mode == '1'
       start_guessing
     else
       start_challenging
@@ -35,8 +34,8 @@ class Game
   end
 
   def one_guessing_turn
-    @guesser_player_text.colors
-    if @computer_challenger.take_a_guess == true
+    @guesser_player_text.colors #colors_explanation
+    if @computer_challenger.take_a_guess
       @guesser_player_text.winner
       exit
     else
@@ -49,6 +48,7 @@ class Game
     if @computer_guesser.perfect_match
       @challenging_player_text.matching_colors
       @computer_guesser.matching_colors
+      @computer_guesser.building_new_guess
       one_challenging_turn
     else
       victory
@@ -57,8 +57,8 @@ class Game
 
   def victory
     @challenging_player_text.victory_text
+    exit
   end
-
 end
 
 game = Game.new
