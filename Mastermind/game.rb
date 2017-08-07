@@ -34,7 +34,7 @@ class Game
   end
 
   def one_guessing_turn
-    @guesser_player_text.colors #colors_explanation
+    @guesser_player_text.colors
     if @computer_challenger.take_a_guess
       @guesser_player_text.winner
       exit

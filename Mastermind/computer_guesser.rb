@@ -1,6 +1,6 @@
 class ComputerGuesser
   def initialize
-    @colors_letters = %w[Y G B O W P R] #constante
+    @colors_letters = %w[Y G B O W P R]
     @old_guess = []
     @new_guess = Array.new(5)
     @matching_colors_array = []
@@ -23,7 +23,7 @@ class ComputerGuesser
     array_to_s.join(', ')
   end
 
-  def first_guess #random_guess (name)
+  def first_guess
     @old_guess = @colors_letters.sample(5)
     p "==> #{@old_guess.join(' ')} (#{colors_to_s(@old_guess)})"
   end
@@ -54,7 +54,7 @@ class ComputerGuesser
   end
 
   def new_guess_with_perfect_match
-    unless @perfect_match_input == '0' #array.first _ methode avec no_match?
+    unless @perfect_match_input == '0'
       @perfect_match_array.each do |el|
         @new_guess[@old_guess.index(el)] = el
       end
