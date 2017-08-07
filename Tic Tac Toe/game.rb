@@ -4,24 +4,32 @@ require './players'
 class Game
 
   def start_new_game
-    @player1 = Players.new
-    @player2 = Players.new
-    @player1.ask_for_nameX
-    @player2.ask_for_nameO # never used :) maybe add a @current_player and each turn you shift between player 1 and 2 ?
+    @player1 = Players.new('X')
+    @player2 = Players.new('O')
+    @player1.ask_for_name
+    @player2.ask_for_name
     @board = Board.new
     4.times do
-      one_turn('X')
-      one_turn('O')
+      one_turn(@player1)
+      one_turn(@player2)
     end
-    one_turn('X')
+    one_turn(@player1)
     even
   end
 
-  def one_turn(symbol)
+  def one_turn(player)
     @board.display
-    @player1.choose_box(symbol)
-    @board.setting_position(symbol)
-    @board.check_for_victory(symbol)
+    player.choose_box_message
+    @board.ask_for_next_position(player.symbol)
+    victory?(player)
+  end
+
+  def victory?(player)
+    if @board.victory_conditions(player.symbol)
+      @board.display
+      player.victory_message
+      exit
+    end
   end
 
   def even

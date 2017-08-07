@@ -48,11 +48,8 @@ class ComputerChallenger
   end
 
   def valid?(try)
-    try.each do |el| # .all?
-      unless @colors_letters.include?(el) && try.size == 5
+      unless try.all? { |el| @colors_letters.include?(el) && try.size == 5 }
         false
-        break
       end
-    end
   end
 end

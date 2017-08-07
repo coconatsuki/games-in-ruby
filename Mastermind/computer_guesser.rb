@@ -93,11 +93,8 @@ class ComputerGuesser
   end
 
   def valid?(try)
-    try.each do |el| # .all?
-      unless @colors_letters.include?(el) || el == '0'
+    unless try.all? {|el| @colors_letters.include?(el) || el == '0'}
         false
-        break
-      end
     end
   end
 
