@@ -1,5 +1,7 @@
 class System
 
+  attr_accessor :word_to_display, :used_letters
+
   def initialize
     @word_to_display = []
     @used_letters = []
@@ -13,11 +15,11 @@ class System
     new_word
   end
 
-  def display_word(new_word)
+  def display_word
     w = @word_to_display.map do |letter|
       letter.nil? ? ' _ ' : letter
     end
-    p "This is the word : #{w.join(" ")}"
+    puts "This is the word : '#{w.join(" ")}'"
   end
 
   def choose_a_letter
@@ -32,7 +34,7 @@ class System
   end
 
   def valid?(letter)
-    letter =~ /^[A-Z]$/
+    letter =~ /^[A-Z]$/ || letter == 'SAVE'
   end
 
   def available?(letter)

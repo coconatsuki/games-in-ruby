@@ -15,7 +15,7 @@ class Text
   end
 
   def self.choose_a_letter_message
-    puts "\nPlease choose a letter !"
+    puts "\nPlease choose a letter ! // Or, if you want to save and quit, write 'save'."
   end
 
   def self.letter_not_included_message
@@ -30,6 +30,13 @@ class Text
   def self.game_over_message
     puts '--------------------------'
     puts "\n Sorry, it was the last turn (12)... GAME OVER ! "
+    puts '    ________'
+    puts '    |      |'
+    puts '    |      O'
+    puts '    |    --|--'
+    puts '    |     / \ '
+    puts '    |'
+    puts '---------'
   end
 
   def self.error_message_1
@@ -41,5 +48,15 @@ class Text
     unless used_letters.empty?
       puts "These are the letters you used so far : #{used_letters.join(', ')}"
     end
+  end
+
+  def self.save_game_question
+    puts '--------------------------'
+    puts "Do you want to save the game and quit ? If so, write 'save'. If no, just push enter."
+    puts '--------------------------'
+  end
+
+  def self.load_question
+    puts "Do you want to load a previous game ? If so, write 'load'. Otherwise, just push enter."
   end
 end
