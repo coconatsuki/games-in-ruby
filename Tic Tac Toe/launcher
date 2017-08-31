@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require './game'
+
+game = Game.new
+game.start_new_game

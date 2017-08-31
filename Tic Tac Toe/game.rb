@@ -2,6 +2,7 @@ require './board'
 require './players'
 
 class Game
+  attr_accessor :board
 
   def start_new_game
     @player1 = Players.new('X')
@@ -28,16 +29,19 @@ class Game
     if @board.victory_conditions(player.symbol)
       @board.display
       player.victory_message
-      exit
+      exit_now
     end
   end
 
   def even
     @board.display
     puts "\nNo one wins... Sorry. Play again ?"
+    exit_now
+  end
+
+  private
+
+  def exit_now
     exit
   end
 end
-
-game = Game.new
-game.start_new_game
