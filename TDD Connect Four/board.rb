@@ -1,8 +1,6 @@
-require 'pry'
 require './matrix'
 
 class Board
-
   attr_accessor :matrix
 
   def initialize
